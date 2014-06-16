@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # port 8080 on the virtual machine is forwarded to port 9090 on the host.
   # This will allow the virtual machine to communicate of the common proxy port 8080.
-  config.vm.network :forwarded_port, guest: 8080, host: 9090
+  config.vm.network :forwarded_port, guest: 80, host: 9090
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -35,6 +35,9 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network :public_network
+
+  # need to add this to make chef-client work 
+  #config.vm.provision :shell, :inline => "sudo apt-get update -y"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
